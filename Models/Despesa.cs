@@ -1,16 +1,31 @@
-﻿namespace ApiFinanceiro.Models
+﻿using Microsoft.EntityFrameworkCore;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace ApiFinanceiro.Models
 {
+    [Table("despesas"), PrimaryKey(nameof(Id))]
     public class Despesa
     {
-        // , , , data previsão, data recebimento
-        // , 
-        public Guid Id { get; set; } = Guid.NewGuid();
+        [Column("id")]
+        public int Id { get; set; }
+        
+        [Column("descricao")]
         public required string Descricao { get; set; }
+
+        [Column("categoria")]
         public required string Categoria { get; set; }
+
+        [Column("valor")]
         public decimal Valor { get; set; }
-        public DateOnly DataPrevisao{ get; set; } 
+
+        [Column("data_vencimento")]
+        public DateOnly DataPrevisao{ get; set; }
         // dataVencimento
+
+        [Column("situacao")]
         public required string Situacao { get; set; }
+
+        [Column("data_pagamento")]
         public required DateTime? DataRecebimento { get; set; }
         //DataPAgamento
     }
